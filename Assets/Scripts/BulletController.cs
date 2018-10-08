@@ -14,7 +14,7 @@ public class BulletController : MonoBehaviour {
     private void OnEnable()
     {
         Invoke("Disable", 2f);
-        bod.AddForce(-transform.up * spd);
+        bod.AddForce(transform.right * spd);
     }
 
     private void OnDisable()
