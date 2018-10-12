@@ -28,6 +28,17 @@ public class BulletController : MonoBehaviour {
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.tag == "Player")
+        {
+            GameObject player = collision.gameObject;
+            Debug.Log("Hit a player");
+            //Damage(player, dmg);
+        }
         Disable();
+    }
+
+    void Damage(GameObject obj, int damage)
+    {
+        //obj.GetComponent<PlayerHealth>().hp -= damage;
     }
 }
