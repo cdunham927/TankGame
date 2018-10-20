@@ -21,7 +21,7 @@ public class TankControls : MonoBehaviour {
 
         if (input.y != 0)
         {
-            bod.AddForce(-transform.up * spd * input.y * Time.deltaTime);
+            bod.AddForce(transform.right * spd * input.y * Time.deltaTime);
         }
 
         if (input.x != 0)
