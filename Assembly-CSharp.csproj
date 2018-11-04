@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\BulletController.cs" />
     <Compile Include="Assets\Scripts\BumperRotation.cs" />
+    <Compile Include="Assets\Scripts\SpeedBoostController.cs" />
     <Compile Include="Assets\Scripts\TankControls.cs" />
     <Compile Include="Assets\Scripts\TankDirectionalMovement.cs" />
     <Compile Include="Assets\Scripts\TankTurretController.cs" />
