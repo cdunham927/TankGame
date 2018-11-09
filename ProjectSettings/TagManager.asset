@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Destructible
+  - p1
+  - p2
+  - Walkable
   layers:
   - Default
   - TransparentFX

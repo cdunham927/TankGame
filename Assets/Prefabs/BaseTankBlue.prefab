@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4968948989657602}
   m_Layer: 0
   m_Name: BaseTankBlue
-  m_TagString: Untagged
+  m_TagString: p1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -237,6 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: Fire1
+  input2: 
   bullet: {fileID: 1247168985363068, guid: 2f6963511b710554f98d6a3daed6dc9f, type: 2}
   bulSpawn: {fileID: 4660859283696328}
   weaponCooldown: 0.25

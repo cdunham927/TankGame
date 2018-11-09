@@ -8,21 +8,17 @@ public class BulletController : MonoBehaviour {
     private Rigidbody2D bod;
     Animator anim;
     //Things to deactivate once the bullet is 'destroyed'
-    SpriteRenderer rend;
-    Collider2D col;
-    bool canHit = false;
+    public string thisTag;
+    public string otherTag;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
         bod = GetComponent<Rigidbody2D>();
-        rend = GetComponent<SpriteRenderer>();
-        col = GetComponent<Collider2D>();
     }
 
     private void OnEnable()
     {
-        SwitchDependencies();
         anim.Play("BulletSpawn");
         Invoke("Disable", 2f);
         bod.AddForce(transform.right * spd);
@@ -35,7 +31,6 @@ public class BulletController : MonoBehaviour {
 
     void Disable()
     {
-        SwitchDependencies();
         anim.Play("BulletDeath");
         float timeOfAnimation = GetComponent<Animator>().runtimeAnimatorController.animationClips[0].length;
         bod.velocity = new Vector3(0, 0, 0);
@@ -44,36 +39,27 @@ public class BulletController : MonoBehaviour {
 
     void Deactivate()
     {
-        canHit = false;
         gameObject.SetActive(false);
-    }
-
-    //Activate/Deactivate components
-    void SwitchDependencies()
-    {
-        rend.enabled = !rend.enabled;
-        col.enabled = !col.enabled;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (canHit == true)
+        if (collision.tag == otherTag)
         {
-            if (collision.tag == "Player")
-            {
-                GameObject player = collision.gameObject;
-                Debug.Log("Hit a player");
-                //Damage(player, dmg);
-            }
+            GameObject player = collision.gameObject;
+            Debug.Log("Hit a player");
+            //Damage(player, dmg);
             Disable();
         }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.tag == "Player")
+        if (collision.tag == "Destructible")
         {
-            canHit = true;
+            GameObject obj = collision.gameObject;
+            obj.GetComponent<DestructibleWallController>().TakeDamage();
+            Disable();
+        }
+        if (collision.tag == "Untagged")
+        {
+            Disable();
         }
     }
 
