@@ -8,6 +8,7 @@ TagManager:
   - p1
   - p2
   - Walkable
+  - Speed
   layers:
   - Default
   - TransparentFX

@@ -7,7 +7,7 @@ public class SpeedBoostController : MonoBehaviour {
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.tag == "p1" || collision.tag == "p2")
         {
             collision.GetComponent<Rigidbody2D>().AddForce(transform.right * spd * Time.deltaTime);
         }

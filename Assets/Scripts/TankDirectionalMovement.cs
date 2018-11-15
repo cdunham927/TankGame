@@ -8,15 +8,23 @@ public class TankDirectionalMovement : MonoBehaviour {
     public string inp2;
     Rigidbody2D bod;
     Vector2 input;
+    public float regSpd;
+    public float boostSpd;
     public float spd;
+    float spdCools;
 
 	// Use this for initialization
 	void Start () {
         bod = GetComponent<Rigidbody2D>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    private void OnEnable()
+    {
+        spd = regSpd;
+    }
+
+    // Update is called once per frame
+    void Update () {
         input = new Vector2(Input.GetAxisRaw(inp), Input.GetAxisRaw(inp2));
         float step = spd * Time.deltaTime;
         //Moving Right
@@ -61,5 +69,18 @@ public class TankDirectionalMovement : MonoBehaviour {
             bod.AddForce(transform.right * spd * Time.deltaTime);
         }
 
+        if (spdCools > 0) spdCools -= Time.deltaTime;
+
+        if (spdCools <= 0 && spd == boostSpd) spd = regSpd;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Speed")
+        {
+            spd = boostSpd;
+            spdCools = 7.5f;
+            collision.gameObject.SetActive(false);
+        }
     }
 }
