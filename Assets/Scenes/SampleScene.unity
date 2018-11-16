@@ -9338,8 +9338,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 120
-  inp: StickX1
-  inp2: StickY1
+  inp: StickX2
+  inp2: StickY2
   hull: {fileID: 0}
   offset: {x: 0, y: 0.1, z: 0}
 --- !u!1001 &957220654
@@ -13940,18 +13940,18 @@ Prefab:
     - target: {fileID: 114552932086114274, guid: fa643352b520452428e43a298648a7f9,
         type: 2}
       propertyPath: input
-      value: Fire1
+      value: Trigger1
       objectReference: {fileID: 0}
     - target: {fileID: 114552932086114274, guid: fa643352b520452428e43a298648a7f9,
         type: 2}
       propertyPath: input2
-      value: 
+      value: Trigger2
       objectReference: {fileID: 0}
     - target: {fileID: 212966831761547444, guid: fa643352b520452428e43a298648a7f9,
         type: 2}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 405ce5f35b7c0454d91e2b82e6a90e0f,
+      objectReference: {fileID: 21300000, guid: ed541d2e85dabc74491c2de5c054d612,
         type: 3}
     - target: {fileID: 4229009804256198, guid: fa643352b520452428e43a298648a7f9, type: 2}
       propertyPath: m_LocalScale.x
@@ -13965,7 +13965,7 @@ Prefab:
         type: 2}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 390e8813a878b994393636c5c2029a33,
+      objectReference: {fileID: 21300000, guid: 8f4463c338590a1469002d8e7dcf83e5,
         type: 3}
     - target: {fileID: 4043684451591344, guid: fa643352b520452428e43a298648a7f9, type: 2}
       propertyPath: m_LocalScale.x
@@ -13984,12 +13984,12 @@ Prefab:
     - target: {fileID: 212966831761547444, guid: fa643352b520452428e43a298648a7f9,
         type: 2}
       propertyPath: m_Color.r
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212966831761547444, guid: fa643352b520452428e43a298648a7f9,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.011921883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212966831761547444, guid: fa643352b520452428e43a298648a7f9,
         type: 2}
@@ -13999,12 +13999,12 @@ Prefab:
     - target: {fileID: 212976074575600706, guid: fa643352b520452428e43a298648a7f9,
         type: 2}
       propertyPath: m_Color.r
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212976074575600706, guid: fa643352b520452428e43a298648a7f9,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.011921883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212976074575600706, guid: fa643352b520452428e43a298648a7f9,
         type: 2}
@@ -16145,7 +16145,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.28, y: 0.88}
+    oldSize: {x: 1.28, y: 1.28}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -19860,7 +19860,7 @@ Prefab:
         type: 2}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: f0518aa523fba244eaab6933ecd14818,
+      objectReference: {fileID: 21300000, guid: 41a990072e250f447b0a1b554adb9a33,
         type: 3}
     - target: {fileID: 4737557104482956, guid: 3f5c2fe6385550b469c2b613a1bbc868, type: 2}
       propertyPath: m_LocalScale.x
@@ -19874,7 +19874,7 @@ Prefab:
         type: 2}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 9873e8a71b4d14f40aa119c36668686d,
+      objectReference: {fileID: 21300000, guid: 63db2586f3ed08245ab3c3543505ba2a,
         type: 3}
     - target: {fileID: 4572909649570582, guid: 3f5c2fe6385550b469c2b613a1bbc868, type: 2}
       propertyPath: m_LocalPosition.y
