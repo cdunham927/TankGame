@@ -9,6 +9,9 @@ public class TankTurretController : MonoBehaviour {
     public Transform bulSpawn;
     public float weaponCooldown;
     float cools = 0f;
+    public int mines = 0;
+    public string specialInp;
+    public GameObject mine;
 
     void Update () {
         if (input2 == "")
@@ -28,6 +31,17 @@ public class TankTurretController : MonoBehaviour {
             }
         }
 
+
+        if (Input.GetButtonDown(specialInp) && mines > 0)
+        {
+            DropMine();
+        }
+
         if (cools > 0) cools -= Time.deltaTime;
 	}
+
+    public void DropMine()
+    {
+        Instantiate(mine, transform.position, Quaternion.identity);
+    }
 }

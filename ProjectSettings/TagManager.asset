@@ -9,6 +9,7 @@ TagManager:
   - p2
   - Walkable
   - Speed
+  - Time
   layers:
   - Default
   - TransparentFX

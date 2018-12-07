@@ -82,5 +82,11 @@ public class TankDirectionalMovement : MonoBehaviour {
             spdCools = 7.5f;
             collision.gameObject.SetActive(false);
         }
+
+        if (collision.tag == "Mine")
+        {
+            GetComponent<TankTurretController>().mines++;
+            Destroy(collision.gameObject);
+        }
     }
 }
