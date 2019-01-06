@@ -12,9 +12,11 @@ public class TankDirectionalMovement : MonoBehaviour {
     public float boostSpd;
     public float spd;
     float spdCools;
+    GameController controller;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
+        controller = FindObjectOfType<GameController>();
         bod = GetComponent<Rigidbody2D>();
 	}
 
@@ -27,51 +29,54 @@ public class TankDirectionalMovement : MonoBehaviour {
     void Update () {
         input = new Vector2(Input.GetAxisRaw(inp), Input.GetAxisRaw(inp2));
         float step = spd * Time.deltaTime;
-        //Moving Right
-        if (input.x > 0 && input.y == 0)
+        if (controller.started)
         {
-            transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
-            bod.AddForce(transform.right * spd * Time.deltaTime);
-        }
-        if (input.x > 0 && input.y > 0)
-        {
-            transform.rotation = Quaternion.Euler(new Vector3(0, 0, 45));
-            bod.AddForce(transform.right * spd * Time.deltaTime);
-        }
-        if (input.x == 0 && input.y > 0)
-        {
-            transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
-            bod.AddForce(transform.right * spd * Time.deltaTime);
-        }
-        if (input.x < 0 && input.y > 0)
-        {
-            transform.rotation = Quaternion.Euler(new Vector3(0, 0, 135));
-            bod.AddForce(transform.right * spd * Time.deltaTime);
-        }
-        if (input.x < 0 && input.y == 0)
-        {
-            transform.rotation = Quaternion.Euler(new Vector3(0, 0, 180));
-            bod.AddForce(transform.right * spd * Time.deltaTime);
-        }
-        if (input.x < 0 && input.y < 0)
-        {
-            transform.rotation = Quaternion.Euler(new Vector3(0, 0, 225));
-            bod.AddForce(transform.right * spd * Time.deltaTime);
-        }
-        if (input.x == 0 && input.y < 0)
-        {
-            transform.rotation = Quaternion.Euler(new Vector3(0, 0, 270));
-            bod.AddForce(transform.right * spd * Time.deltaTime);
-        }
-        if (input.x > 0 && input.y < 0)
-        {
-            transform.rotation = Quaternion.Euler(new Vector3(0, 0, 315));
-            bod.AddForce(transform.right * spd * Time.deltaTime);
-        }
+            //Moving Right
+            if (input.x > 0 && input.y == 0)
+            {
+                transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+                bod.AddForce(transform.right * spd * Time.deltaTime);
+            }
+            if (input.x > 0 && input.y > 0)
+            {
+                transform.rotation = Quaternion.Euler(new Vector3(0, 0, 45));
+                bod.AddForce(transform.right * spd * Time.deltaTime);
+            }
+            if (input.x == 0 && input.y > 0)
+            {
+                transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
+                bod.AddForce(transform.right * spd * Time.deltaTime);
+            }
+            if (input.x < 0 && input.y > 0)
+            {
+                transform.rotation = Quaternion.Euler(new Vector3(0, 0, 135));
+                bod.AddForce(transform.right * spd * Time.deltaTime);
+            }
+            if (input.x < 0 && input.y == 0)
+            {
+                transform.rotation = Quaternion.Euler(new Vector3(0, 0, 180));
+                bod.AddForce(transform.right * spd * Time.deltaTime);
+            }
+            if (input.x < 0 && input.y < 0)
+            {
+                transform.rotation = Quaternion.Euler(new Vector3(0, 0, 225));
+                bod.AddForce(transform.right * spd * Time.deltaTime);
+            }
+            if (input.x == 0 && input.y < 0)
+            {
+                transform.rotation = Quaternion.Euler(new Vector3(0, 0, 270));
+                bod.AddForce(transform.right * spd * Time.deltaTime);
+            }
+            if (input.x > 0 && input.y < 0)
+            {
+                transform.rotation = Quaternion.Euler(new Vector3(0, 0, 315));
+                bod.AddForce(transform.right * spd * Time.deltaTime);
+            }
 
-        if (spdCools > 0) spdCools -= Time.deltaTime;
+            if (spdCools > 0) spdCools -= Time.deltaTime;
 
-        if (spdCools <= 0 && spd == boostSpd) spd = regSpd;
+            if (spdCools <= 0 && spd == boostSpd) spd = regSpd;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

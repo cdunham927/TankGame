@@ -12,32 +12,41 @@ public class TankTurretController : MonoBehaviour {
     public int mines = 0;
     public string specialInp;
     public GameObject mine;
+    GameController controller;
+
+    private void Awake()
+    {
+        controller = FindObjectOfType<GameController>();
+    }
 
     void Update () {
-        if (input2 == "")
+        if (controller.started)
         {
-            if (Input.GetButtonDown(input) && cools <= 0)
+            if (input2 == "")
             {
-                cools = weaponCooldown;
-                Instantiate(bullet, bulSpawn.position, transform.rotation);
+                if (Input.GetButtonDown(input) && cools <= 0)
+                {
+                    cools = weaponCooldown;
+                    Instantiate(bullet, bulSpawn.position, transform.rotation);
+                }
             }
-        }
-        else
-        {
-            if ((Input.GetAxis(input) != 0 || Input.GetAxis(input2) != 0) && cools <= 0)
+            else
             {
-                cools = weaponCooldown;
-                Instantiate(bullet, bulSpawn.position, transform.rotation);
+                if ((Input.GetAxis(input) != 0 || Input.GetAxis(input2) != 0) && cools <= 0)
+                {
+                    cools = weaponCooldown;
+                    Instantiate(bullet, bulSpawn.position, transform.rotation);
+                }
             }
+
+
+            if (Input.GetButtonDown(specialInp) && mines > 0)
+            {
+                DropMine();
+            }
+
+            if (cools > 0) cools -= Time.deltaTime;
         }
-
-
-        if (Input.GetButtonDown(specialInp) && mines > 0)
-        {
-            DropMine();
-        }
-
-        if (cools > 0) cools -= Time.deltaTime;
 	}
 
     public void DropMine()
