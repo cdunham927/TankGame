@@ -48,7 +48,7 @@ public class BulletController : MonoBehaviour {
         {
             GameObject player = collision.gameObject;
             Debug.Log("Hit a player");
-            //Damage(player, dmg);
+            Damage(player, atk);
             Disable();
         }
         if (collision.tag == "Destructible")
@@ -65,6 +65,6 @@ public class BulletController : MonoBehaviour {
 
     void Damage(GameObject obj, int damage)
     {
-        //obj.GetComponent<PlayerHealth>().hp -= damage;
+        obj.GetComponent<Health>().hp -= damage;
     }
 }
