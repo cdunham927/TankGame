@@ -7,8 +7,6 @@ public class TurretRotation : MonoBehaviour {
     public string inp;
     public string inp2;
     Vector2 inpAxis;
-
-    public GameObject hull;
     public Vector3 offset;
 
     void Update()

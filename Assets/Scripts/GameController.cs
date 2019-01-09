@@ -12,8 +12,8 @@ public class GameController : MonoBehaviour {
     float time;
     public Text timeText;
     public GameObject timeObj;
-    int scoreA = 0;
-    int scoreB = 0;
+    public int scoreA = 0;
+    public int scoreB = 0;
     public GameObject endUI;
     public GameObject[] players;
     public GameObject[] turrets;
@@ -22,6 +22,10 @@ public class GameController : MonoBehaviour {
     public Sprite[] hullColors;
     public Sprite[] turretColors;
     public GameObject customizeColors;
+    public Image TankA;
+    public Image TurretA;
+    public Image TankB;
+    public Image TurretB;
 
     private void OnEnable()
     {
@@ -52,12 +56,6 @@ public class GameController : MonoBehaviour {
         endUI.SetActive(true);
     }
 
-    public void GetPoint(int num)
-    {
-        if (num == 0) scoreA++;
-        else scoreB++;
-    }
-
     public void StartGame()
     {
         customizeColors.SetActive(false);
@@ -79,11 +77,15 @@ public class GameController : MonoBehaviour {
     {
         players[0].GetComponent<SpriteRenderer>().sprite = hullColors[num];
         turrets[0].GetComponent<SpriteRenderer>().sprite = turretColors[num];
+        TankA.sprite = hullColors[num];
+        TurretA.sprite = turretColors[num];
     }
 
     public void ChangeColorB(int num)
     {
         players[1].GetComponent<SpriteRenderer>().sprite = hullColors[num];
         turrets[1].GetComponent<SpriteRenderer>().sprite = turretColors[num];
+        TankB.sprite = hullColors[num];
+        TurretB.sprite = turretColors[num];
     }
 }

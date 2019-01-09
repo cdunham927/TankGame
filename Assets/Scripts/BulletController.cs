@@ -47,7 +47,6 @@ public class BulletController : MonoBehaviour {
         if (collision.tag == otherTag)
         {
             GameObject player = collision.gameObject;
-            Debug.Log("Hit a player");
             Damage(player, atk);
             Disable();
         }

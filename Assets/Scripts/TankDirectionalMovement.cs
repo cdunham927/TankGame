@@ -13,6 +13,7 @@ public class TankDirectionalMovement : MonoBehaviour {
     public float spd;
     float spdCools;
     GameController controller;
+    public bool dead = false;
 
 	// Use this for initialization
 	void Awake () {
@@ -29,7 +30,7 @@ public class TankDirectionalMovement : MonoBehaviour {
     void Update () {
         input = new Vector2(Input.GetAxisRaw(inp), Input.GetAxisRaw(inp2));
         float step = spd * Time.deltaTime;
-        if (controller.started)
+        if (controller.started && !dead)
         {
             //Moving Right
             if (input.x > 0 && input.y == 0)

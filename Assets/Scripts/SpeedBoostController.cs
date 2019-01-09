@@ -9,7 +9,7 @@ public class SpeedBoostController : MonoBehaviour {
     {
         if (collision.tag == "p1" || collision.tag == "p2")
         {
-            collision.GetComponent<Rigidbody2D>().AddForce(transform.right * spd * Time.deltaTime);
+                collision.GetComponent<Rigidbody2D>().AddForce(transform.right * spd * Time.deltaTime);
         }
     }
 }

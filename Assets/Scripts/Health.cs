@@ -7,11 +7,72 @@ public class Health : MonoBehaviour {
     public float hp;
     public float maxHp;
     public Image health;
+    public Transform[] spawnPoints;
+    TankDirectionalMovement tankMove;
+    public AnimationClip dieClip;
+    public GameObject turret;
+    Vector3 baseScale;
+    GameController cont;
+    float cools = 0f;
+    Rigidbody2D bod;
+    public GameObject explosion;
+    SpriteRenderer rend;
+
+    private void Awake()
+    {
+        rend = GetComponent<SpriteRenderer>();
+        bod = GetComponent<Rigidbody2D>();
+        cont = FindObjectOfType<GameController>();
+        baseScale = transform.localScale;
+        tankMove = GetComponent<TankDirectionalMovement>();
+    }
 
     // Update is called once per frame
     void Update ()
     {   //Health UI
-        if (health != null) health.fillAmount = hp / maxHp;
+        if (health != null && !tankMove.dead) health.fillAmount = hp / maxHp;
+
+        if (cools > 0) cools -= Time.deltaTime;
+
+        if (hp <= 0)
+        {
+            if (cools <= 0) {
+                if (this.tag == "p1")
+                {
+                    cont.scoreB++;
+                }
+                else
+                {
+                    cont.scoreA++;
+                }
+                cools = 2f;
+                Instantiate(explosion, transform.position, transform.rotation);
+            }
+            Die();
+        }
     }
 
+    public void Die()
+    {
+        bod.velocity = Vector2.zero;
+        GetComponent<Collider2D>().enabled = false;
+        transform.localScale = new Vector3(6, 6, 1);
+        rend.enabled = false;
+        turret.SetActive(false);
+        tankMove.dead = true;
+        Invoke("Respawn", dieClip.length + 1.5f);
+    }
+
+    public void Respawn()
+    {
+        transform.localScale = baseScale;
+        rend.enabled = true;
+        turret.SetActive(true);
+        GetComponent<Collider2D>().enabled = true;
+        hp = maxHp;
+        tankMove.dead = false;
+        int spawn = Random.Range(0, spawnPoints.Length);
+        transform.rotation = spawnPoints[spawn].rotation;
+        transform.position = spawnPoints[spawn].position;
+    }
 }

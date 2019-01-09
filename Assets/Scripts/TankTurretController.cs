@@ -13,14 +13,16 @@ public class TankTurretController : MonoBehaviour {
     public string specialInp;
     public GameObject mine;
     GameController controller;
+    TankDirectionalMovement tankMove;
 
     private void Awake()
     {
         controller = FindObjectOfType<GameController>();
+        tankMove = GetComponentInParent<TankDirectionalMovement>();
     }
 
     void Update () {
-        if (controller.started)
+        if (controller.started && !tankMove.dead)
         {
             if (input2 == "")
             {

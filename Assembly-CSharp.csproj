@@ -65,7 +65,9 @@
     <Compile Include="Assets\Scripts\BulletController.cs" />
     <Compile Include="Assets\Scripts\BumperRotation.cs" />
     <Compile Include="Assets\Scripts\DestructibleWallController.cs" />
+    <Compile Include="Assets\Scripts\ExplosionController.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
+    <Compile Include="Assets\Scripts\Health.cs" />
     <Compile Include="Assets\Scripts\LoadScene.cs" />
     <Compile Include="Assets\Scripts\SpeedBoostController.cs" />
     <Compile Include="Assets\Scripts\TankControls.cs" />
