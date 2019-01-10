@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class GameController : MonoBehaviour {
     public float maxTime;
@@ -26,6 +27,12 @@ public class GameController : MonoBehaviour {
     public Image TurretA;
     public Image TankB;
     public Image TurretB;
+
+    //End of round stuff
+    public EventSystem sys;
+    public Text scoreAText;
+    public Text scoreBText;
+    public Text finalText;
 
     private void OnEnable()
     {
@@ -53,7 +60,24 @@ public class GameController : MonoBehaviour {
 
     public void ShowEndGame()
     {
+        timeText.text = "TIME UP";
+        scoreAText.text = "Player 1\n " + scoreA.ToString();
+        scoreBText.text = "Player 2\n " + scoreB.ToString();
+        started = false;
+        sys.firstSelectedGameObject = endUI.GetComponentInChildren<Button>().gameObject;
         endUI.SetActive(true);
+        if (scoreA > scoreB)
+        {
+            finalText.text = "Player 1 wins!";
+        }
+        else if (scoreA < scoreB)
+        {
+            finalText.text = "Player 2 wins!";
+        }
+        else
+        {
+            finalText.text = "Tie";
+        }
     }
 
     public void StartGame()

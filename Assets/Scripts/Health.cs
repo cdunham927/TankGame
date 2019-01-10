@@ -7,6 +7,7 @@ public class Health : MonoBehaviour {
     public float hp;
     public float maxHp;
     public Image health;
+    public Image healthMain;
     public Transform[] spawnPoints;
     TankDirectionalMovement tankMove;
     public AnimationClip dieClip;
@@ -29,7 +30,9 @@ public class Health : MonoBehaviour {
 
     // Update is called once per frame
     void Update ()
-    {   //Health UI
+    {
+        healthMain.gameObject.SetActive((cont.started == true ? true : false));
+        //Health UI
         if (health != null && !tankMove.dead) health.fillAmount = hp / maxHp;
 
         if (cools > 0) cools -= Time.deltaTime;
@@ -47,6 +50,7 @@ public class Health : MonoBehaviour {
                 }
                 cools = 2f;
                 Instantiate(explosion, transform.position, transform.rotation);
+                hp = maxHp;
             }
             Die();
         }
@@ -56,7 +60,6 @@ public class Health : MonoBehaviour {
     {
         bod.velocity = Vector2.zero;
         GetComponent<Collider2D>().enabled = false;
-        transform.localScale = new Vector3(6, 6, 1);
         rend.enabled = false;
         turret.SetActive(false);
         tankMove.dead = true;
@@ -69,7 +72,6 @@ public class Health : MonoBehaviour {
         rend.enabled = true;
         turret.SetActive(true);
         GetComponent<Collider2D>().enabled = true;
-        hp = maxHp;
         tankMove.dead = false;
         int spawn = Random.Range(0, spawnPoints.Length);
         transform.rotation = spawnPoints[spawn].rotation;

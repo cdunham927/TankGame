@@ -9,10 +9,6 @@ public class TurretRotation : MonoBehaviour {
     Vector2 inpAxis;
     public Vector3 offset;
 
-    void Update()
-    {
-    }
-
     private void LateUpdate()
     {
         //transform.position = new Vector3(hull.transform.position.x + offset.x, hull.transform.position.y + offset.y);
