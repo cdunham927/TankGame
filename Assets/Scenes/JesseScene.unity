@@ -11149,6 +11149,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4703019620169372, guid: 4d63289557cf8504cabf913fd94586ca,
     type: 2}
   m_PrefabInternal: {fileID: 1085275040}
+--- !u!1 &1087487338 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1587702147018802, guid: fa643352b520452428e43a298648a7f9,
+    type: 2}
+  m_PrefabInternal: {fileID: 1215529438}
 --- !u!1001 &1088213929
 Prefab:
   m_ObjectHideFlags: 0
@@ -12839,6 +12844,7 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 61557829063429888, guid: fa643352b520452428e43a298648a7f9, type: 2}
+    - {fileID: 114649605730056910, guid: fa643352b520452428e43a298648a7f9, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: fa643352b520452428e43a298648a7f9, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1215529439 stripped
@@ -12846,31 +12852,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1879481250797982, guid: fa643352b520452428e43a298648a7f9,
     type: 2}
   m_PrefabInternal: {fileID: 1215529438}
---- !u!61 &1215529440
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1215529439}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.28, y: 1.28}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.28, y: 0.88}
-  m_EdgeRadius: 0
 --- !u!114 &1215529442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12884,7 +12865,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 100
   maxHp: 100
-  health: {fileID: 0}
+  health: {fileID: 1736386909}
+  spawnPoints: []
+  dieClip: {fileID: 7400000, guid: 9385ab52e06629d42a8b6cb25daf650e, type: 2}
+  turret: {fileID: 1087487338}
+  explosion: {fileID: 1900721271917798, guid: 1dcca0f3d31a1784a890893fe1a864ab, type: 2}
 --- !u!1001 &1218401991
 Prefab:
   m_ObjectHideFlags: 0
@@ -14444,6 +14429,8 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 61158780069883046, guid: 3f5c2fe6385550b469c2b613a1bbc868, type: 2}
+    - {fileID: 114445376223519832, guid: 3f5c2fe6385550b469c2b613a1bbc868, type: 2}
+    - {fileID: 61167781631636802, guid: 3f5c2fe6385550b469c2b613a1bbc868, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 3f5c2fe6385550b469c2b613a1bbc868, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1335339202 stripped
@@ -14470,24 +14457,7 @@ MonoBehaviour:
   speed: 120
   inp: StickX2
   inp2: StickY2
-  hull: {fileID: 0}
   offset: {x: 0, y: 0.1, z: 0}
---- !u!114 &1335339205
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1335339203}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bab1bc8583a674740abc9d535317449c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inp: Horizontal2
-  inp2: Vertical2
-  regSpd: 1150
-  boostSpd: 2300
-  spd: 1150
 --- !u!61 &1335339206
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14527,6 +14497,10 @@ MonoBehaviour:
   hp: 100
   maxHp: 100
   health: {fileID: 1736386909}
+  spawnPoints: []
+  dieClip: {fileID: 7400000, guid: 9385ab52e06629d42a8b6cb25daf650e, type: 2}
+  turret: {fileID: 1335339202}
+  explosion: {fileID: 1900721271917798, guid: 1dcca0f3d31a1784a890893fe1a864ab, type: 2}
 --- !u!1001 &1339660433
 Prefab:
   m_ObjectHideFlags: 0
@@ -15277,8 +15251,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTime: 120
+  started: 1
+  time: 0
   timeText: {fileID: 136661720}
+  timeObj: {fileID: 0}
+  scoreA: 0
+  scoreB: 0
   endUI: {fileID: 0}
+  players: []
+  turrets: []
+  hullColors: []
+  turretColors: []
+  customizeColors: {fileID: 0}
+  TankA: {fileID: 0}
+  TurretA: {fileID: 0}
+  TankB: {fileID: 0}
+  TurretB: {fileID: 0}
 --- !u!4 &1429161389
 Transform:
   m_ObjectHideFlags: 0
@@ -17299,42 +17287,42 @@ Prefab:
     - target: {fileID: 224477931602927196, guid: 8e4f17db7066b404bb24f9977d2c3831,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -541
+      value: 86
       objectReference: {fileID: 0}
     - target: {fileID: 224477931602927196, guid: 8e4f17db7066b404bb24f9977d2c3831,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 226
+      value: -40
       objectReference: {fileID: 0}
     - target: {fileID: 224477931602927196, guid: 8e4f17db7066b404bb24f9977d2c3831,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 207.1
+      value: 156.8
       objectReference: {fileID: 0}
     - target: {fileID: 224477931602927196, guid: 8e4f17db7066b404bb24f9977d2c3831,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 67.4
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 224477931602927196, guid: 8e4f17db7066b404bb24f9977d2c3831,
         type: 2}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224477931602927196, guid: 8e4f17db7066b404bb24f9977d2c3831,
         type: 2}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224477931602927196, guid: 8e4f17db7066b404bb24f9977d2c3831,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224477931602927196, guid: 8e4f17db7066b404bb24f9977d2c3831,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224477931602927196, guid: 8e4f17db7066b404bb24f9977d2c3831,
         type: 2}
