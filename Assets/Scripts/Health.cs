@@ -18,9 +18,12 @@ public class Health : MonoBehaviour {
     Rigidbody2D bod;
     public GameObject explosion;
     SpriteRenderer rend;
+    AudioSource src;
+    public AudioClip die;
 
     private void Awake()
     {
+        src = GetComponent<AudioSource>();
         rend = GetComponent<SpriteRenderer>();
         bod = GetComponent<Rigidbody2D>();
         cont = FindObjectOfType<GameController>();
@@ -58,6 +61,7 @@ public class Health : MonoBehaviour {
 
     public void Die()
     {
+        src.PlayOneShot(die);
         bod.velocity = Vector2.zero;
         GetComponent<Collider2D>().enabled = false;
         rend.enabled = false;

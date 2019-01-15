@@ -10,9 +10,12 @@ public class BulletController : MonoBehaviour {
     //Things to deactivate once the bullet is 'destroyed'
     public string thisTag;
     public string otherTag;
+    AudioSource src;
+    public AudioClip hit;
 
     private void Awake()
     {
+        src = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
         bod = GetComponent<Rigidbody2D>();
     }
@@ -46,6 +49,7 @@ public class BulletController : MonoBehaviour {
     {
         if (collision.tag == otherTag)
         {
+            src.PlayOneShot(hit);
             GameObject player = collision.gameObject;
             Damage(player, atk);
             Disable();

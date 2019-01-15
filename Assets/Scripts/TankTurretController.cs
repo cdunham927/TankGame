@@ -14,9 +14,12 @@ public class TankTurretController : MonoBehaviour {
     public GameObject mine;
     GameController controller;
     TankDirectionalMovement tankMove;
+    public AudioClip shoot;
+    AudioSource src;
 
     private void Awake()
     {
+        src = GetComponentInParent<AudioSource>();
         controller = FindObjectOfType<GameController>();
         tankMove = GetComponentInParent<TankDirectionalMovement>();
     }
@@ -28,6 +31,7 @@ public class TankTurretController : MonoBehaviour {
             {
                 if (Input.GetButtonDown(input) && cools <= 0)
                 {
+                    src.PlayOneShot(shoot);
                     cools = weaponCooldown;
                     Instantiate(bullet, bulSpawn.position, transform.rotation);
                 }
@@ -36,6 +40,7 @@ public class TankTurretController : MonoBehaviour {
             {
                 if ((Input.GetAxis(input) != 0 || Input.GetAxis(input2) != 0) && cools <= 0)
                 {
+                    src.PlayOneShot(shoot);
                     cools = weaponCooldown;
                     Instantiate(bullet, bulSpawn.position, transform.rotation);
                 }
