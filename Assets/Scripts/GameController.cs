@@ -112,4 +112,9 @@ public class GameController : MonoBehaviour {
         TankB.sprite = hullColors[num];
         TurretB.sprite = turretColors[num];
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
